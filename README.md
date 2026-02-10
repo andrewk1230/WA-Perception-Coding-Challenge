@@ -120,13 +120,13 @@ dataset/
 ## Submission Requirements
 
 1. `trajectory.png` (required)  
-2. `trajectory.mp4` (optional)  
+2. `trajectory.mp4` (required)  
 3.  Your Code
 4.  Any extra plots, overlays, or videos
 5. `README.md` (max 1 page):  
-   - Describe your method, assumptions, and results  
+   - Describe your method, assumptions, and results
 
-Please create a <u>PUBLIC</u> GitHub repository and [submit](https://forms.gle/YRurun5pyShtf1LPA) your link to the application.
+Please create a <u>PUBLIC</u> GitHub repository and [submit](https://docs.google.com/forms/d/e/1FAIpQLSe55-Y66YOcldUcrppVq9P2DhvAHYgOKR8xSL_dUpPcKIOrZg/viewform?usp=sharing&ouid=113587858663372351737) your link to the application.
 
 ---
 
