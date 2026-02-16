@@ -1,7 +1,24 @@
-smooth_trajectory : It removes the high-frequency "shaking" while preserving the actual direction and velocity of the movement.
+Method
+Localization: Uses BBox data to find the traffic light and DBSCAN clustering to identify the golf cart, barrels, barriers, and pedestrians.
 
-process_data: Handles data extraction and coordinate math. It iterates through the .npz files, which starts with converting 0 and inf values to NaN. Uses CSV bounding boxes to crop a patch of the 3D data and find distances. This also calculates both world frame and ego frame which centers the traffic light and the car, respectively. 
+Coordinate Mapping: Sets the Traffic Light as the origin (0,0). All movement is calculated relative to this fixed point.
 
-save_world_animation: In this view, the camera follows the action from above and the traffic light is at origin (0,0). You can also see the track for ego path and cart path.
+Color Detection: Analyzes RGB patches to classify the light state (Red/Yellow/Green).
 
-save_ego_view_gif: The car(camera perspective) is set as the cennter and never moves. The traffic light and gold cart in this case moves towards & away from the car. 
+Refinement: Applies Median and Gaussian filters to smooth jumpy sensor data and Cubic Interpolation to create fluid 100-frame trajectories.
+
+2. Assumptions
+Fixed Anchor: The traffic light is stationary and serves as the global reference point.
+
+Geometric Heuristics: Objects are classified by size and height (e.g., pedestrians are tall/narrow; barrels are short/cylindrical).
+
+Sensor Validity: Assumes depth data is accurate enough within 50 meters to form identifiable point clusters.
+
+3. Results
+Visual Output: Generates a .gif showing the synchronized movement of the Ego vehicle, golf cart, and pedestrians.
+
+Map Features: Produces a static map (reconstruction_map.png) plotting consistent environmental obstacles like barrels and guardrails.
+
+Dynamic UI: Includes a real-time status box in the animation that updates based on the detected traffic light color.
+
+Unfortunately, the code was unable to detect the pedestrians correctly
